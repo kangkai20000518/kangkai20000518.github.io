@@ -3,11 +3,11 @@ layout: page
 title: About
 permalink: /about/
 ---
-Hello I am Puppycat, PhD. I am a Python master.
+Hello I am Kai Kang. I am going to Berkely for my master degree. And my current major is Math. But I really enjoy Python and stats since I want to be a DA in my future.
 
 ## More information
 
-My favorite food is spinach. I like to SCREAM when I don't get my way but that's okay because I'm cute.
+Ilove Tomato, because it is juicy.
 
 ![](/images/puppycat.jpg){:height="300px"}
 
