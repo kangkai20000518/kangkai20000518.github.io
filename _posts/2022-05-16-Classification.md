@@ -301,6 +301,11 @@ history1 = model1.fit(train,
 from matplotlib import pyplot as plt
 plt.plot(history1.history["accuracy"])
 plt.plot(history1.history["val_accuracy"])
+plt.xlabel('epochs')
+plt.ylabel('accuracy')
+plt.legend(('accuracy', 'val_accuracy'), loc='upper right')  
+plt.title('accuracy for only the article title model')
+
 ```
 
 
@@ -403,6 +408,10 @@ history2 = model2.fit(train,
 from matplotlib import pyplot as plt
 plt.plot(history2.history["accuracy"])
 plt.plot(history2.history["val_accuracy"])
+plt.xlabel('epochs')
+plt.ylabel('accuracy')
+plt.legend(('accuracy', 'val_accuracy'), loc='upper right')  
+plt.title('accuracy for only the article model')
 ```
 
 
@@ -540,6 +549,10 @@ history3 = model3.fit(train,
 from matplotlib import pyplot as plt
 plt.plot(history3.history["accuracy"])
 plt.plot(history3.history["val_accuracy"])
+plt.xlabel('epochs')
+plt.ylabel('accuracy')
+plt.legend(('accuracy', 'val_accuracy'), loc='upper right')  
+plt.title('accuracy for the title and article model')
 ```
 
 
