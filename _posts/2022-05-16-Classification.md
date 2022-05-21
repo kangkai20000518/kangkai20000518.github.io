@@ -316,7 +316,7 @@ plt.title('accuracy for only the article title model')
 
 
 
-![output_23_1.png]({{ site.baseurl }}/images/output_23_1.png)     
+![output_20_1.png]({{ site.baseurl }}/images/output_20_1.png)     
     
 
 
@@ -422,7 +422,7 @@ plt.title('accuracy for only the article model')
 
 
 
-![output_32_1.png]({{ site.baseurl }}/images/output_32_1.png)     
+![output_30_1.png]({{ site.baseurl }}/images/output_30_1.png)     
 
     
 
@@ -563,7 +563,7 @@ plt.title('accuracy for the title and article model')
 
 
 
-![output_42_1.png]({{ site.baseurl }}/images/output_42_1.png) 
+![output_40_1.png]({{ site.baseurl }}/images/output_40_1.png) 
     
 
 
