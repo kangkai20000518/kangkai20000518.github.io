@@ -298,7 +298,8 @@ LAX_flight2012=flight_data_each_year(Flight2012)
 
 
 ```python
-LAX_flight=pd.concat([LAX_flight2015,LAX_flight2016,LAX_flight2017,LAX_flight2018])#因为数据量过于庞大所以需要把数据集分组进行结合
+LAX_flight=pd.concat([LAX_flight2015,LAX_flight2016,LAX_flight2017,LAX_flight2018])
+#Because the amount of data is too large, it is necessary to group the data sets to combine
 LAX_flight=pd.concat([LAX_flight,LAX_flight2012,LAX_flight2013,LAX_flight2014])
 ```
 
