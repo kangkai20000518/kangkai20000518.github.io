@@ -7,7 +7,7 @@ Hello I am Kai Kang. I am going to Berkely for my master degree. And my current 
 
 ## More information
 
-Ilove Tomato, because it is juicy.
+Make Collective Unicorns！
 
 ![](/images/puppycat.jpg){:height="300px"}
 
