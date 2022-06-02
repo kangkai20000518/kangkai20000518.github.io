@@ -1339,8 +1339,9 @@ The above create_sequence function can convert our 2D data into a 3D array becau
 
 ## §4. Model Selection
 
-When we got the data ready we decided to use keras' sequential model to construct the training model. For an ordinary neural network, whenever it completes one thing and outputting the result, it will forget the past, and when new variables enter the network, it will only make predictions based on new inputs. However, human thinking is not like this. Instead of throwing everything away and starting from scratch, we apply old and newly acquired information to get new answers. And RNNs work very similar to the way humans think. But RNN is not omnipotent. When the old information and the new input information are too far away, it will lose the ability to learn such distant information. And in the process, we may lose very important information, making predictions inaccurate. The solution is LSTM, a variant of RNN. LSTM does not remember every information, but remembers important information and brings it into the next operation, and automatically discards unimportant factors. The process of implementation is to introduce three important principles, input gate, an output gate and a forget gate. Considering that the weather will have a continuous impact on the alignment rate, the LSTM recurrent neural network is used here to make predictions, using Dense(2) , so that our output model can output two results, the first result is the prediction effect of the number of flights on the second day, and the second result is the prediction result of the punctuality rate on the second day.
+When we got the data ready we decided to use keras' sequential model to construct the training model. For an ordinary neural network, whenever it completes one thing and outputting the result, it will forget the past, and when new variables enter the network, it will only make predictions based on new inputs. However, human thinking is not like this. Instead of throwing everything away and starting from scratch, we apply old and newly acquired information to get new answers. And RNNs work very similar to the way humans think. But RNN is not omnipotent. When the old information and the new input information are too far away, it will lose the ability to learn such distant information. And in the process, we may lose very important information, making predictions inaccurate. The solution is LSTM, a variant of RNN. LSTM does not remember every information, but remembers important information and brings it into the next operation, and automatically discards unimportant factors. The process of implementation is to introduce three important principles, input gate, an output gate and a forget gate. Considering that the weather will have a continuous impact on the alignment rate, the LSTM recurrent neural network is used here to make predictions, using Dense(2) , so that our output model can output two results, the first result is the prediction effect of the number of flights on the second day, and the second result is the prediction result of the punctuality rate on the second day. The picture below is a sample RNN that can help us to understand the concept.
 
+![RNN.png]({{ site.baseurl }}/images/RNN.png)    
 
 ```python
 from tensorflow.keras.layers import Bidirectional
@@ -1440,5 +1441,7 @@ model.evaluate(X_test,y_test)
 
 
 
-The accuracy of the model finally reached 74% because only the weather factor is used, so the accuracy is pretty good.
+The accuracy of the model finally reached 74% because only the weather factor is used, so the accuracy is pretty good. Of course, during model training, we can also adjust its window size, training times, batch size, dropout ratio, etc. When time is sufficient, the model can be adjusted repeatedly to obtain better prediction results.
 
+## §5. Acknowledgment
+Many thanks to our dearest Harlin who provided us with this wonderful to let us practice what we’ve learned in real life cases.
