@@ -1400,7 +1400,7 @@ plt.show()
 ```
 
 
-![output_45_0.png]({{ site.baseurl }}/images/output_45_0.png)      
+![flight1.png]({{ site.baseurl }}/images/flight1.png)      
 
 
 It can be seen that our effect is still good! Because the loss of vaildation has been declining.
@@ -1423,7 +1423,7 @@ plt.legend()
 
 
 
-![output_47_1.png]({{ site.baseurl }}/images/output_47_1.png)        
+![flight2.png]({{ site.baseurl }}/images/flight2.png)        
 
 
 
