@@ -1445,5 +1445,73 @@ model.evaluate(X_test,y_test)
 
 The accuracy of the model finally reached 74% because only the weather factor is used, so the accuracy is pretty good. Of course, during model training, we can also adjust its window size, training times, batch size, dropout ratio, etc. When time is sufficient, the model can be adjusted repeatedly to obtain better prediction results.
 
-## §5. Acknowledgment
+## §5. Web Tech
+For basic uses of flask such as render_template, html introduce, post, get, and etc. Please check this post
+In this project, we use to flask add more functionality such as output dataframe and embeding plotly plots into the web
+
+### (1) output dataframe (convert into table format of HTML)
+```python
+@app.route('/Data_preparation/')
+def Data_preparation():
+    df0 = pd.read_csv(r"data\flights_original.csv").iloc[:,:10]
+    df1 = web_helper.LAX_table()
+    df2 = web_helper.weather_data()
+    df3 = web_helper.weather_data_each_year(pd.read_csv(r"data\weather2012_2018.csv"))
+    df4 = web_helper.merge_data(df3, df1)
+    return render_template('Data_preparation.html', table0=[df0.iloc[:10].to_html(classes='data', header="true")],
+                                                    table1=[df1.iloc[:10].to_html(classes='data', header="true")],
+                                                    table2=[df2.iloc[:10].to_html(classes='data', header="true")],
+                                                    table3=[df3.iloc[:10].to_html(classes='data', header="true")],
+                                                    table4=[df4.iloc[:10].to_html(classes='data', header="true")])
+```
+When we open the section ‘/Data_preparation/’ page, app.py will call the function Data_preparation(), inside this function call, we have functions to import and return corresponding data frames and assigned them with the name df0 to df4. before we need render these dataframes into html form by using pd.to_html(replace pd with dataframe object).
+
+In the html, we also need place holder for these tables:
+```python
+<figure class="table">
+  
+  <figcaption><small>Original Flights Data</small></figcaption>
+</figure>
+```
+the to_html method returns a query string (similar to the list of lists here), so we need for loop here to embed each element in the table
+
+### (2) plotly plots
+```python
+def plotly_flights(year):
+    LAX_flight = pd.read_csv(r"data\LAX_flight.csv")
+
+    fig = px.line(data_frame = LAX_flight[LAX_flight['FL_DATE'].str.contains(pat = str(year))], # data that needs to be plotted
+                 x = "FL_DATE", # column name for x-axis
+                 y = "Total_flight_per_day",
+                 markers=True,
+                 color = "week", # column name for color coding
+                 width = 800,
+                 height = 500)
+
+    # reduce whitespace
+    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    # show the plot
+    return fig
+```
+Similar to the functions that we used to return data frame, this function creates plots by using plotly.
+The year argument let users to choose which year of data they want to observe.
+
+Under the same idea, we convert plotly object into a JSON query string that JavaScript could understand, then render it with the ‘Data_preparation.html’ template.
+```python
+fig1 = web_helper.plotly_flights(request.form["year"])
+graphJSON1 = json.dumps(fig1, cls=plotly.utils.PlotlyJSONEncoder)
+return render_template('Data_preparation.html', graphJSON_object = graphJSON1)
+```
+There also is a place holder in the ‘Data_preparation.html’:
+```python
+<span id="chart1"></span>
+
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+  var graphs1 = ;
+  Plotly.newPlot('chart1',graphs1,{});
+</script>
+```
+Here, we need few more steps to actually make a plot that HTML could ‘understand’. ‘’ import the JavaScript package which use to convert JSON string to HTML. Plotly.newPlot() is the function of the package. ‘chart1’ is the id, which tells where to ‘draw’ the plot. The first line is the place where plot should be draw.
+## §6. Acknowledgment
 Many thanks to our dearest Harlin who provided us with this wonderful to let us practice what we’ve learned in real life cases.
