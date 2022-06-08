@@ -7,7 +7,7 @@ Link to our git repo: https://github.com/hcheng10/PIC16B_Project
 
 ## §1. Introduction
 The aim of this project is to use the data set provided by the U.S. Department of Transportation
-(DOT) Bureau of Transportation Statistics to analyze factors to predict the number of Total flight and punctuality rate for each day. I
+(DOT) Bureau of Transportation Statistics to analyze factors to predict the number of Total flight and punctuality rate for each day. We
 want to use the LSTM(Long Short-Term Memory) to help me get the result. The ultimate goal of the
 project is help people travel more efficiently and know the relationship between flight and weather.
 
@@ -51,7 +51,7 @@ Flight2012=pd.read_csv("2012.csv")
 
 Because LSTM(Long Short-Term Memory) is one of the deep learning techniques, as much data as possible will help me get more accurate results, so I downloaded all the original flight data from 2012-2018, the following function will perform the most basic data The cleaning work is to facilitate the subsequent splicing of other datasets to form a complete structure.
 
-From the raw data, we found that there are a total of 28 columns in the flight dataset. If the unit of our prediction is every flight instead of every day, I will select predictors through correlation plot or heat map, but in this project, the object we explore is the unit of day, so after data cleaning, Most columns will be removed, or converted to other varibles.
+From the raw data, we found that there are a total of 28 columns in the flight dataset. If the unit of our prediction is every flight instead of every day, We will select predictors through correlation plot or heat map, but in this project, the object we explore is the unit of day, so after data cleaning, Most columns will be removed, or converted to other varibles.
 
 
 ```python
